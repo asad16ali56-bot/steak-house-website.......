@@ -1,0 +1,1111 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+    --header-height: 3.5rem;
+
+    /*========== Colors ==========*/
+    --first-color: hsl(30, 32%, 56%);
+    --first-color-alt: hsl(30, 32%, 46%);
+    --white-color: hsl(0, 0%, 98%);
+    --dark-color: hsl(0, 0%, 10%);
+    --text-color: hsl(0, 0%, 20%);
+    --body-color: hsl(0, 0%, 8%);
+    --container-color: hsl(0, 0%, 100%);
+
+    /*========== Font and typography ==========*/
+    --body-font: "Lora", serif;
+    --second-font: "Dancing Script", cursive;
+
+    --biggest-font-size: 2.5rem;
+    --bigger-font-size: 1.75rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+
+    /*========== Font weight ==========*/
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+
+/*=============== RESPONSIVE TYPOGRAPHY ===============*/
+@media (width >= 1150px) {
+    :root {
+        --biggest-font-size: 4rem;
+        --bigger-font-size: 2.5rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+        --smaller-font-size: .813rem;
+    }
+}
+
+
+/*=============== BASE ===============*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+input,
+button {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+body {
+    background-color: var(--body-color);
+    color: var(--white-color);
+}
+
+section {
+    scroll-margin-top: 5rem;
+}
+
+input,
+button {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: var(--font-bold);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+    max-width: 1120px;
+    margin-inline: 1rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.section {
+    padding-block: 5rem 1rem;
+}
+
+.section__title {
+    text-align: center;
+    font-size: var(--bigger-font-size);
+    margin-bottom: 1rem;
+}
+
+.section__subtitle {
+    display: block;
+    text-align: center;
+    font: var(--font-bold) var(--bigger-font-size) var(--second-font);
+    color: var(--first-color);
+}
+
+.main {
+    overflow: hidden;
+}
+
+
+/*=============== HEADER & NAV ===============*/
+.header {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: var(--body-color);
+    z-index: var(--z-fixed);
+    transition: box-shadow 0.4s;
+}
+
+.nav-container {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 1120px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+.nav__logo {
+    color: var(--first-color);
+    font: var(--font-bold) var(--h2-font-size) var(--second-font);
+}
+
+.nav__toggle {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+/*=============== MOBILE NAVIGATION ===============*/
+@media (width <= 1150px) {
+
+    .nav__menu {
+        position: fixed;
+        top: 0;
+        right: -120%;
+
+        background-color: var(--body-color);
+
+        width: 80%;
+        height: 100%;
+
+        box-shadow: -2px 0 16px hsla(0, 0%, 0%, 0.3);
+
+        padding: 7rem 0 2rem 3rem;
+
+        z-index: var(--z-fixed);
+
+        transition: right 0.4s;
+    }
+
+    .nav__list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 2.5rem;
+    }
+
+    .nav__link {
+        color: var(--white-color);
+        font-weight: var(--font-semi-bold);
+        transition: color 0.4s;
+    }
+
+    .nav__link:hover {
+        color: var(--first-color);
+    }
+
+    .nav__close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+
+        color: var(--white-color);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+}
+
+
+/*=============== SHOW MENU ===============*/
+.show-menu {
+    right: 0;
+}
+
+
+/*=============== DESKTOP NAVIGATION ===============*/
+@media (width > 1150px) {
+
+    .nav-container {
+        height: calc(var(--header-height) + 2rem);
+    }
+
+    .nav__toggle {
+        display: none;
+    }
+
+    .nav__close {
+        display: none;
+    }
+
+    .nav__list {
+        display: flex;
+        align-items: center;
+        column-gap: 2.5rem;
+    }
+
+    .nav__link {
+        color: var(--white-color);
+        font-weight: var(--font-semi-bold);
+        transition: color 0.4s;
+    }
+
+    .nav__link:hover {
+        color: var(--first-color);
+    }
+}
+
+/*=============== CHANGE HEADER STYLES ===============*/
+.scroll-header {
+  box-shadow: 0 2px 16px hsla(0, 0%, 0%, 0.3);
+}
+
+/*=============== ACTIVE LINK ===============*/
+.active-link {
+    color: var(--first-color);
+}
+
+/*=============== HOME SECTION ===============*/
+.home__container {
+  row-gap: 5rem;
+  padding: 4.5rem;
+}
+
+.home__data {
+  text-align: center;
+}
+
+.home__title {
+  font-size: var(--biggest-font-size);
+  margin-bottom: 2rem;
+}
+
+.home__images {
+    position: relative;
+    justify-self: center;
+}
+
+.home__images .home__frying-pan {
+    position: relative;
+    width: 280px;
+    z-index: 10;
+}
+
+.home__images img {
+    position: absolute;
+}
+
+.home__rosemary-2 {
+    width: 100px;
+    right: -1rem;
+    bottom: 4rem;
+}
+
+.home__spoon {
+    width: 80px;
+    right: -1.5rem;
+    top: 1rem;
+}
+
+.home__onion {
+    width: 60px;
+    top: -1rem;
+    left: 0;
+}
+
+.home__rosemary-1 {
+    width: 60px;
+    bottom: 3rem;
+    left: -2rem;
+}
+
+.home__tomato {
+    width: 60px;
+    left: 0.5rem;
+    bottom: 1.5rem;
+}
+
+.home__pepper {
+    width: 100px;
+    right: 6rem;
+    bottom: 1rem;
+}
+
+.home__salt-1 {
+    width: 150px;
+    top: -1.5rem;
+    right: 1rem;
+}
+
+.home__salt-2 {
+    width: 150px;
+    left: -3rem;
+    bottom: 3.5rem;
+}
+
+/*=============== BUTTON ===============*/
+.button {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  background-color: transparent;
+  color: var(--white-color);
+  border: 2px solid var(--white-color);
+  padding: 1rem 2rem;
+  font-weight: var(--font-semi-bold);
+  transition: background-color 0.4s, border-color 0.4s, color 0.4s;
+}
+
+.button i {
+  font-size: 1.5rem;
+  font-weight: initial;
+}
+
+.button:hover {
+  border: var(--first-color);
+  background-color: var(--first-color);
+  color: var(--dark-color);
+}
+
+.button__link {
+    display: inline-flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    color: var(--first-color);
+    font-weight: var(--font-semi-bold);
+    transition: color 0.4s;
+}
+
+.button__link i {
+    font-size: 1.5rem;
+    font-weight: 900;
+    transition: transform 0.4s;
+}
+
+.button__link:hover {
+    color: var(--first-color-alt);
+}
+
+.button__link:hoover i{
+    transform: translateX(0.5rem);
+}
+
+/*=============== ABOUT SECTION ===============*/
+.about__container {
+    position: relative;
+    row-gap: 0;
+    padding-bottom: 2rem;
+}
+
+.about__flour {
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: -3rem;
+}
+
+.about__img {
+    position: relative;
+}
+
+.about__data {
+    position: relative;
+    background-color: var(--white-color);
+    color: var(--dark-color);
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.about__discription {
+    margin-bottom: 3rem;
+    color: var(--text-color);
+}
+
+.about__rosemary {
+    width: 150px;
+    position: absolute;
+    right: -3.5rem;
+    bottom: -2.5rem ;
+}
+
+/*=============== MENU SECTION ===============*/
+
+.menu__container {
+    row-gap: 4rem;
+}
+
+.menu__description {
+    align-items: center;
+}
+
+.menu__content {
+    display: grid;
+    row-gap: 3rem;
+}
+
+.menu__card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu__name {
+    font: var(--font-bold) var(--h2-font-size) var(--second-font);
+    color: var(--first-color);
+    margin-bottom: 0.5rem;
+}
+
+.menu__summary {
+    font-size: var(--small-font-size);
+}
+
+/*=============== MENU IMAGES ===============*/
+
+.menu__images {
+    position: relative;
+    width: max-content;
+    margin-inline: auto;
+}
+
+.menu__card:nth-child(even) .menu__info {
+    order: -1;
+}
+
+.menu__card:nth-child(odd) .menu__images {
+    justify-self: flex-start;
+}
+
+.menu__card:nth-child(even) .menu__images {
+    justify-self: flex-end;
+}
+
+
+/*=============== DISH 1 ===============*/
+
+.menu__dish-1 {
+    width: 100px;
+    position: relative;
+    z-index: 5;
+}
+
+.menu__rosemary {
+    width: 80px;
+    position: absolute;
+    left: -1rem;
+    bottom: -1rem;
+    z-index: 6;
+}
+
+.menu__flour-1 {
+    max-width: initial;
+    width: 100px;
+    position: absolute;
+    top: -2rem;
+    right: -1.5rem;
+    z-index: 1;
+}
+
+
+/*=============== DISH 2 ===============*/
+
+.menu__dish-2 {
+    width: 140px;
+    position: relative;
+    z-index: 5;
+}
+
+.menu__flour-2 {
+    max-width: initial;
+    width: 150px;
+    position: absolute;
+    top: -2rem;
+    left: -3rem;
+    z-index: 1;
+}
+
+.menu__pepper {
+    width: 100px;
+    position: absolute;
+    right: 0.5rem;
+    bottom: -2rem;
+    z-index: 6;
+}
+
+/*=============== DISH 3 ===============*/
+
+.menu__dish-3 {
+    width: 120px;
+    position: relative;
+    z-index: 5;
+}
+
+.menu__flour-3 {
+    max-width: initial;
+    width: 150px;
+    position: absolute;
+    top: -3rem;
+    right: -3rem;
+    z-index: 1;
+}
+
+.menu__tomato {
+    width: 50px;
+    position: absolute;
+    left: 0.5rem;
+    bottom: -1rem;
+    z-index: 6;
+}
+
+
+/*=============== DISH 4 ===============*/
+
+.menu__dish-4 {
+    width: 125px;
+    position: relative;
+    z-index: 5;
+}
+
+.menu__flour-4 {
+    max-width: initial;
+    width: 150px;
+    position: absolute;
+    top: -1.5rem;
+    left: -2rem;
+    z-index: 1;
+}
+
+/*=============== EVENTS SECTION ===============*/
+.events__container {
+    position: relative;
+    row-gap: 0;
+    padding-bottom: 2rem;
+}
+
+.events__flour {
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: -3rem;
+}
+
+.events__image {
+    position: relative;
+} 
+
+.events__data {
+    position: relative;
+    background-color: var(--white-color);
+    color: var(--dark-color);
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.events__description {
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.events__info {
+    margin-bottom: 3rem;
+}
+
+.events__name {
+    font-size: var(--normal-font-size);
+    margin-bottom: 0.5rem;
+}
+
+.events__details {
+    color: var(--text-color);
+}
+
+.events__spoon {
+    width: 150px;
+    position: absolute;
+    right: -1.5rem;
+    bottom: -1rem;
+}
+
+/*=============== INGREDIENTS SECTION ===============*/
+
+.ingredients__container {
+    row-gap: 5.5rem;
+}
+
+.ingredients__description {
+    text-align: center;
+}
+
+.ingredients__images {
+    position: relative;
+    justify-self: center;
+}
+
+.ingredients__images img {
+    position: absolute;
+}
+
+.ingredients__images .ingredients__img-1 {
+    position: relative;
+    width: 110px;
+}
+
+ .ingredients__img-2 {
+    width: 45px;
+    left: -3.5rem;
+    bottom: 0;
+}
+
+.ingredients__img-3 {
+    width: 38px;
+    right: -3rem;
+    bottom: 0;
+}
+
+.ingredients__img-4 {
+    width: 32px;
+    left: -6rem;
+    top: 2.5rem;
+}
+
+.ingredients__img-5 {
+    width: 55px;
+    left: -6.5rem;
+    bottom: 0;
+}
+
+.ingredients__img-6 {
+    width: 45px;
+    right: -3.5rem;
+    top: 0.5rem;
+}
+
+.ingredients__img-7 {
+    width: 45px;
+    right: -6.5rem;
+    top: 3.5rem;
+}
+
+.ingredients__img-8 {
+    width: 60px;
+    right: -7.5rem;
+    bottom: 0;
+}
+
+/*=============== CONTACT SECTION ===============*/
+.contact__container {
+    row-gap: 4rem;
+}
+
+.contact__map iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.contact__map {
+    height: 300px;
+    justify-self: center;
+}
+
+.contact__content {
+    display: grid;
+    row-gap: 1.5rem;
+}
+
+.contact__info {
+    text-align: center;
+}
+
+.contact__icon {
+    display: inline-block;
+    font-size: 2rem;
+    color: var(--first-color);
+    margin-bottom: 0.5rem;
+}
+
+.contact__title {
+    font-size: var(--h2-font-size);
+    color: var(--first-color);
+    margin-bottom: 1rem;
+}
+
+.contact__social {
+    display: flex;
+    justify-content: center;
+    column-gap: 1rem;
+}
+
+.contact__link {
+    display: block;
+    color: var(--white-color);
+    font-size: 1.5rem;
+    transition: scale 0.4s;
+}
+
+.contact__link:hover {
+    scale: 1.1;
+}
+
+.contact__address a {
+    display: block;
+    color: var(--white-color);
+    font-style: normal;
+} 
+
+/*=============== RESERVATION SECTION ===============*/
+
+.reservation__container {
+    position: relative;
+    height: 420px;
+    place-items: center;
+}
+
+.reservation__bg,
+.reservation__shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.reservation__bg {
+    object-fit: cover;
+    object-position: center;
+}
+
+.reservation__shadow {
+    background-color: hsla(0, 0%, 0%, 0.4);
+    z-index: 5;
+}
+
+.reservation__content {
+    position: relative;
+    z-index: 10;
+}
+
+.reservation__data {
+    margin-bottom: 3rem;
+}
+
+.reservation__data .section__subtitle {
+    color: var(--white-color);
+}
+
+/*=============== FOOTER ===============*/
+.footer {
+    padding-block: 5rem 2rem;
+}
+
+.footer__container {
+    row-gap: 3rem;
+}
+
+.footer__title {
+    font-size: var(--normal-font-size);
+    color: var(--first-color);
+    margin-bottom: 0.5rem;
+}
+
+.footer__links {
+    display: flex;
+    column-gap: 1rem;
+}
+
+.footer__link {
+    color: var(--white-color);
+    transition: color 0.4s;
+}
+
+.footer__link:hover {
+    color: var(--first-color);
+}
+
+.footer__address {
+    font-style: normal;
+}
+
+.footer__address span {
+    display: block;
+}
+
+.footer__logo {
+    display: inline-block;
+    color: var(--first-color);
+    font: var(--font-bold) var(--h1-font-size) var(--second-font);
+    margin-bottom: 0.5rem;
+}
+
+.footer__email {
+    display: block;
+}
+
+.footer__copy{
+    display: block;
+    text-align: center;
+    margin-top: 6rem;
+}
+
+
+/*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar {
+    width: 0.6rem;
+    background-color: hsl(0, 0%, 15%);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: hsl(0, 0%, 25%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(0, 0%, 35%);
+}
+
+/*=============== SCROLL UP ===============*/
+.scrollup {
+    position: fixed;
+    right: 1rem;
+    bottom: -50%;
+    background-color: var(--body-color);
+    box-shadow: 0 4px 16px hsla(0, 0%, 0%, 0.3);
+    color: var(--white-color);
+    display: inline-flex;
+    padding: 6px;
+    font-size: 1.25rem;
+    z-index: var(--z-tooltip);
+    transition: bottom 0.4s, transform 0.4s;
+}
+
+.scrollup:hover {
+    transform: translateY(-0.5rem);
+}
+
+.show-scroll {
+    bottom: 3rem;
+}
+
+
+/* For medium devices */
+/*@media (width >= 540px){
+    .about__container,
+    .events__container {
+        width: 350px;
+        margin-inline: auto;
+    }
+
+    .menu__container,
+    .ingredients__container,
+    .contact__container {
+        grid-template-columns: 400px;
+        justify-content: center;
+
+    }
+}*/
+
+/*=============== FOR LARGE DEVICES ===============*/
+
+@media (width > 1150px) {
+
+    .container {
+        max-width: 1120px;
+        margin-inline: auto;
+    }
+
+    .section {
+        padding-block: 7rem 2rem;
+    }
+
+
+    /*=============== HEADER ===============*/
+
+    .nav-container {
+        max-width: 1120px;
+        margin-inline: auto;
+    }
+
+    .nav__toggle,
+    .nav__close {
+        display: none;
+    }
+
+    .nav__list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 2.5rem;
+    }
+
+
+    /*=============== HOME ===============*/
+
+    .home__container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        column-gap: 3rem;
+        padding-block: 8rem 4rem;
+    }
+
+    .home__data {
+        text-align: left;
+    }
+
+
+    /*=============== ABOUT ===============*/
+
+    .about__container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        column-gap: 0;
+    }
+
+    .about__img {
+        width: 100%;
+        max-width: 500px;
+        justify-self: end;
+    }
+
+    .about__data {
+        z-index: 2;
+        width: 100%;
+        max-width: 500px;
+        margin-left: -3rem;
+        padding: 4rem 3rem;
+    }
+
+
+    /*=============== MENU ===============*/
+
+    .menu__header {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        align-items: center;
+        column-gap: 5rem;
+    }
+
+    .menu__description {
+        text-align: left;
+    }
+
+    .menu__content {
+        row-gap: 5rem;
+    }
+
+    .menu__card {
+        grid-template-columns: 250px 350px;
+        column-gap: 5rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu__card:nth-child(odd) .menu__images {
+        justify-self: end;
+    }
+
+    .menu__card:nth-child(even) .menu__images {
+        justify-self: start;
+    }
+
+    .menu__card:nth-child(even) .menu__info {
+        order: -1;
+    }
+
+
+    /*=============== EVENTS ===============*/
+
+    .events__container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        column-gap: 0;
+    }
+
+    .events__img {
+        width: 100%;
+    }
+
+    .events__data {
+        z-index: 2;
+        margin-left: -3rem;
+        padding: 4rem 3rem;
+    }
+
+
+    /*=============== INGREDIENTS ===============*/
+
+    .ingredients__container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+
+
+ /*=============== CONTACT - LARGE DEVICES ===============*/
+
+@media (width >= 1150px) {
+
+    .contact__container {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+        column-gap: 4rem;
+    }
+
+    /* Map */
+    .contact__map {
+        width: 100%;
+    }
+
+    .contact__map iframe {
+        width: 100%;
+        height: 450px;
+        min-height: 450px;
+        display: block;
+        border: 0;
+    }
+
+    /* Contact information */
+    .contact__content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: start;
+        column-gap: 2rem;
+        width: 100%;
+    }
+
+    .contact__info {
+        text-align: center;
+    }
+
+}
+
+    /*=============== FOOTER ===============*/
+
+    .footer__container {
+        grid-template-columns: repeat(4, 1fr);
+        align-items: start;
+        column-gap: 3rem;
+    }
+
+    .footer__links {
+        display: flex;
+        flex-direction: column;
+        row-gap: .75rem;
+    }
+
+}
+
+
+
